@@ -402,7 +402,8 @@ class CloudSearchDomainConnection(AWSAuthConnection):
         if expr is not None:
             query_params['expr'] = expr
         if facet is not None:
-            query_params['facet'] = facet
+            for k, v in facet.iteritems():
+                query_params[k] = v
         if filter_query is not None:
             query_params['fq'] = filter_query
         if highlight is not None:
